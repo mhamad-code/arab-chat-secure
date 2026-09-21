@@ -19,8 +19,11 @@ import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/
 import { Route as AuthenticatedAlertsRouteImport } from './routes/_authenticated/alerts'
 import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticated/settings'
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
+import { Route as AuthenticatedAdminActivityRouteImport } from './routes/_authenticated/admin.activity'
+import { Route as AuthenticatedAdminAlertsRouteImport } from './routes/_authenticated/admin.alerts'
 import { Route as AuthenticatedAdminConversationsRouteImport } from './routes/_authenticated/admin.conversations'
 import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin.users'
+import { Route as AuthenticatedAdminWelcomeRouteImport } from './routes/_authenticated/admin.welcome'
 import { Route as AuthenticatedChatIndexRouteImport } from './routes/_authenticated/chat.index'
 import { Route as AuthenticatedChatConversationIdRouteImport } from './routes/_authenticated/chat.$conversationId'
 
@@ -73,6 +76,18 @@ const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
+const AuthenticatedAdminActivityRoute =
+  AuthenticatedAdminActivityRouteImport.update({
+    id: '/activity',
+    path: '/activity',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminAlertsRoute =
+  AuthenticatedAdminAlertsRouteImport.update({
+    id: '/alerts',
+    path: '/alerts',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 const AuthenticatedAdminConversationsRoute =
   AuthenticatedAdminConversationsRouteImport.update({
     id: '/conversations',
@@ -84,6 +99,12 @@ const AuthenticatedAdminUsersRoute = AuthenticatedAdminUsersRouteImport.update({
   path: '/users',
   getParentRoute: () => AuthenticatedAdminRoute,
 } as any)
+const AuthenticatedAdminWelcomeRoute =
+  AuthenticatedAdminWelcomeRouteImport.update({
+    id: '/welcome',
+    path: '/welcome',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 const AuthenticatedChatIndexRoute = AuthenticatedChatIndexRouteImport.update({
   id: '/chat/',
   path: '/chat/',
@@ -105,8 +126,11 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AuthenticatedAdminRouteWithChildren
   '/alerts': typeof AuthenticatedAlertsRoute
   '/settings': typeof AuthenticatedSettingsRoute
+  '/admin/activity': typeof AuthenticatedAdminActivityRoute
+  '/admin/alerts': typeof AuthenticatedAdminAlertsRoute
   '/admin/conversations': typeof AuthenticatedAdminConversationsRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/admin/welcome': typeof AuthenticatedAdminWelcomeRoute
   '/chat/$conversationId': typeof AuthenticatedChatConversationIdRoute
   '/admin/': typeof AuthenticatedAdminIndexRoute
   '/chat/': typeof AuthenticatedChatIndexRoute
@@ -119,8 +143,11 @@ export interface FileRoutesByTo {
   '/setup': typeof SetupRoute
   '/alerts': typeof AuthenticatedAlertsRoute
   '/settings': typeof AuthenticatedSettingsRoute
+  '/admin/activity': typeof AuthenticatedAdminActivityRoute
+  '/admin/alerts': typeof AuthenticatedAdminAlertsRoute
   '/admin/conversations': typeof AuthenticatedAdminConversationsRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/admin/welcome': typeof AuthenticatedAdminWelcomeRoute
   '/chat/$conversationId': typeof AuthenticatedChatConversationIdRoute
   '/admin': typeof AuthenticatedAdminIndexRoute
   '/chat': typeof AuthenticatedChatIndexRoute
@@ -136,8 +163,11 @@ export interface FileRoutesById {
   '/_authenticated/admin': typeof AuthenticatedAdminRouteWithChildren
   '/_authenticated/alerts': typeof AuthenticatedAlertsRoute
   '/_authenticated/settings': typeof AuthenticatedSettingsRoute
+  '/_authenticated/admin/activity': typeof AuthenticatedAdminActivityRoute
+  '/_authenticated/admin/alerts': typeof AuthenticatedAdminAlertsRoute
   '/_authenticated/admin/conversations': typeof AuthenticatedAdminConversationsRoute
   '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
+  '/_authenticated/admin/welcome': typeof AuthenticatedAdminWelcomeRoute
   '/_authenticated/chat/$conversationId': typeof AuthenticatedChatConversationIdRoute
   '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
   '/_authenticated/chat/': typeof AuthenticatedChatIndexRoute
@@ -153,8 +183,11 @@ export interface FileRouteTypes {
     | '/admin'
     | '/alerts'
     | '/settings'
+    | '/admin/activity'
+    | '/admin/alerts'
     | '/admin/conversations'
     | '/admin/users'
+    | '/admin/welcome'
     | '/chat/$conversationId'
     | '/admin/'
     | '/chat/'
@@ -167,8 +200,11 @@ export interface FileRouteTypes {
     | '/setup'
     | '/alerts'
     | '/settings'
+    | '/admin/activity'
+    | '/admin/alerts'
     | '/admin/conversations'
     | '/admin/users'
+    | '/admin/welcome'
     | '/chat/$conversationId'
     | '/admin'
     | '/chat'
@@ -183,8 +219,11 @@ export interface FileRouteTypes {
     | '/_authenticated/admin'
     | '/_authenticated/alerts'
     | '/_authenticated/settings'
+    | '/_authenticated/admin/activity'
+    | '/_authenticated/admin/alerts'
     | '/_authenticated/admin/conversations'
     | '/_authenticated/admin/users'
+    | '/_authenticated/admin/welcome'
     | '/_authenticated/chat/$conversationId'
     | '/_authenticated/admin/'
     | '/_authenticated/chat/'
@@ -271,6 +310,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/activity': {
+      id: '/_authenticated/admin/activity'
+      path: '/activity'
+      fullPath: '/admin/activity'
+      preLoaderRoute: typeof AuthenticatedAdminActivityRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/alerts': {
+      id: '/_authenticated/admin/alerts'
+      path: '/alerts'
+      fullPath: '/admin/alerts'
+      preLoaderRoute: typeof AuthenticatedAdminAlertsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/admin/conversations': {
       id: '/_authenticated/admin/conversations'
       path: '/conversations'
@@ -283,6 +336,13 @@ declare module '@tanstack/react-router' {
       path: '/users'
       fullPath: '/admin/users'
       preLoaderRoute: typeof AuthenticatedAdminUsersRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/welcome': {
+      id: '/_authenticated/admin/welcome'
+      path: '/welcome'
+      fullPath: '/admin/welcome'
+      preLoaderRoute: typeof AuthenticatedAdminWelcomeRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
     '/_authenticated/chat/': {
@@ -303,14 +363,20 @@ declare module '@tanstack/react-router' {
 }
 
 interface AuthenticatedAdminRouteChildren {
+  AuthenticatedAdminActivityRoute: typeof AuthenticatedAdminActivityRoute
+  AuthenticatedAdminAlertsRoute: typeof AuthenticatedAdminAlertsRoute
   AuthenticatedAdminConversationsRoute: typeof AuthenticatedAdminConversationsRoute
   AuthenticatedAdminUsersRoute: typeof AuthenticatedAdminUsersRoute
+  AuthenticatedAdminWelcomeRoute: typeof AuthenticatedAdminWelcomeRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
 }
 
 const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
+  AuthenticatedAdminActivityRoute: AuthenticatedAdminActivityRoute,
+  AuthenticatedAdminAlertsRoute: AuthenticatedAdminAlertsRoute,
   AuthenticatedAdminConversationsRoute: AuthenticatedAdminConversationsRoute,
   AuthenticatedAdminUsersRoute: AuthenticatedAdminUsersRoute,
+  AuthenticatedAdminWelcomeRoute: AuthenticatedAdminWelcomeRoute,
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
 }
 
