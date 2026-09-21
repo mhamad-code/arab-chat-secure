@@ -21,7 +21,9 @@ import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticat
 import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin.index'
 import { Route as AuthenticatedAdminActivityRouteImport } from './routes/_authenticated/admin.activity'
 import { Route as AuthenticatedAdminAlertsRouteImport } from './routes/_authenticated/admin.alerts'
+import { Route as AuthenticatedAdminBrandingRouteImport } from './routes/_authenticated/admin.branding'
 import { Route as AuthenticatedAdminConversationsRouteImport } from './routes/_authenticated/admin.conversations'
+import { Route as AuthenticatedAdminSecurityRouteImport } from './routes/_authenticated/admin.security'
 import { Route as AuthenticatedAdminUsersRouteImport } from './routes/_authenticated/admin.users'
 import { Route as AuthenticatedAdminWelcomeRouteImport } from './routes/_authenticated/admin.welcome'
 import { Route as AuthenticatedChatIndexRouteImport } from './routes/_authenticated/chat.index'
@@ -88,10 +90,22 @@ const AuthenticatedAdminAlertsRoute =
     path: '/alerts',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
+const AuthenticatedAdminBrandingRoute =
+  AuthenticatedAdminBrandingRouteImport.update({
+    id: '/branding',
+    path: '/branding',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
 const AuthenticatedAdminConversationsRoute =
   AuthenticatedAdminConversationsRouteImport.update({
     id: '/conversations',
     path: '/conversations',
+    getParentRoute: () => AuthenticatedAdminRoute,
+  } as any)
+const AuthenticatedAdminSecurityRoute =
+  AuthenticatedAdminSecurityRouteImport.update({
+    id: '/security',
+    path: '/security',
     getParentRoute: () => AuthenticatedAdminRoute,
   } as any)
 const AuthenticatedAdminUsersRoute = AuthenticatedAdminUsersRouteImport.update({
@@ -128,7 +142,9 @@ export interface FileRoutesByFullPath {
   '/settings': typeof AuthenticatedSettingsRoute
   '/admin/activity': typeof AuthenticatedAdminActivityRoute
   '/admin/alerts': typeof AuthenticatedAdminAlertsRoute
+  '/admin/branding': typeof AuthenticatedAdminBrandingRoute
   '/admin/conversations': typeof AuthenticatedAdminConversationsRoute
+  '/admin/security': typeof AuthenticatedAdminSecurityRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/admin/welcome': typeof AuthenticatedAdminWelcomeRoute
   '/chat/$conversationId': typeof AuthenticatedChatConversationIdRoute
@@ -145,7 +161,9 @@ export interface FileRoutesByTo {
   '/settings': typeof AuthenticatedSettingsRoute
   '/admin/activity': typeof AuthenticatedAdminActivityRoute
   '/admin/alerts': typeof AuthenticatedAdminAlertsRoute
+  '/admin/branding': typeof AuthenticatedAdminBrandingRoute
   '/admin/conversations': typeof AuthenticatedAdminConversationsRoute
+  '/admin/security': typeof AuthenticatedAdminSecurityRoute
   '/admin/users': typeof AuthenticatedAdminUsersRoute
   '/admin/welcome': typeof AuthenticatedAdminWelcomeRoute
   '/chat/$conversationId': typeof AuthenticatedChatConversationIdRoute
@@ -165,7 +183,9 @@ export interface FileRoutesById {
   '/_authenticated/settings': typeof AuthenticatedSettingsRoute
   '/_authenticated/admin/activity': typeof AuthenticatedAdminActivityRoute
   '/_authenticated/admin/alerts': typeof AuthenticatedAdminAlertsRoute
+  '/_authenticated/admin/branding': typeof AuthenticatedAdminBrandingRoute
   '/_authenticated/admin/conversations': typeof AuthenticatedAdminConversationsRoute
+  '/_authenticated/admin/security': typeof AuthenticatedAdminSecurityRoute
   '/_authenticated/admin/users': typeof AuthenticatedAdminUsersRoute
   '/_authenticated/admin/welcome': typeof AuthenticatedAdminWelcomeRoute
   '/_authenticated/chat/$conversationId': typeof AuthenticatedChatConversationIdRoute
@@ -185,7 +205,9 @@ export interface FileRouteTypes {
     | '/settings'
     | '/admin/activity'
     | '/admin/alerts'
+    | '/admin/branding'
     | '/admin/conversations'
+    | '/admin/security'
     | '/admin/users'
     | '/admin/welcome'
     | '/chat/$conversationId'
@@ -202,7 +224,9 @@ export interface FileRouteTypes {
     | '/settings'
     | '/admin/activity'
     | '/admin/alerts'
+    | '/admin/branding'
     | '/admin/conversations'
+    | '/admin/security'
     | '/admin/users'
     | '/admin/welcome'
     | '/chat/$conversationId'
@@ -221,7 +245,9 @@ export interface FileRouteTypes {
     | '/_authenticated/settings'
     | '/_authenticated/admin/activity'
     | '/_authenticated/admin/alerts'
+    | '/_authenticated/admin/branding'
     | '/_authenticated/admin/conversations'
+    | '/_authenticated/admin/security'
     | '/_authenticated/admin/users'
     | '/_authenticated/admin/welcome'
     | '/_authenticated/chat/$conversationId'
@@ -324,11 +350,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminAlertsRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
+    '/_authenticated/admin/branding': {
+      id: '/_authenticated/admin/branding'
+      path: '/branding'
+      fullPath: '/admin/branding'
+      preLoaderRoute: typeof AuthenticatedAdminBrandingRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
     '/_authenticated/admin/conversations': {
       id: '/_authenticated/admin/conversations'
       path: '/conversations'
       fullPath: '/admin/conversations'
       preLoaderRoute: typeof AuthenticatedAdminConversationsRouteImport
+      parentRoute: typeof AuthenticatedAdminRoute
+    }
+    '/_authenticated/admin/security': {
+      id: '/_authenticated/admin/security'
+      path: '/security'
+      fullPath: '/admin/security'
+      preLoaderRoute: typeof AuthenticatedAdminSecurityRouteImport
       parentRoute: typeof AuthenticatedAdminRoute
     }
     '/_authenticated/admin/users': {
@@ -365,7 +405,9 @@ declare module '@tanstack/react-router' {
 interface AuthenticatedAdminRouteChildren {
   AuthenticatedAdminActivityRoute: typeof AuthenticatedAdminActivityRoute
   AuthenticatedAdminAlertsRoute: typeof AuthenticatedAdminAlertsRoute
+  AuthenticatedAdminBrandingRoute: typeof AuthenticatedAdminBrandingRoute
   AuthenticatedAdminConversationsRoute: typeof AuthenticatedAdminConversationsRoute
+  AuthenticatedAdminSecurityRoute: typeof AuthenticatedAdminSecurityRoute
   AuthenticatedAdminUsersRoute: typeof AuthenticatedAdminUsersRoute
   AuthenticatedAdminWelcomeRoute: typeof AuthenticatedAdminWelcomeRoute
   AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
@@ -374,7 +416,9 @@ interface AuthenticatedAdminRouteChildren {
 const AuthenticatedAdminRouteChildren: AuthenticatedAdminRouteChildren = {
   AuthenticatedAdminActivityRoute: AuthenticatedAdminActivityRoute,
   AuthenticatedAdminAlertsRoute: AuthenticatedAdminAlertsRoute,
+  AuthenticatedAdminBrandingRoute: AuthenticatedAdminBrandingRoute,
   AuthenticatedAdminConversationsRoute: AuthenticatedAdminConversationsRoute,
+  AuthenticatedAdminSecurityRoute: AuthenticatedAdminSecurityRoute,
   AuthenticatedAdminUsersRoute: AuthenticatedAdminUsersRoute,
   AuthenticatedAdminWelcomeRoute: AuthenticatedAdminWelcomeRoute,
   AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
