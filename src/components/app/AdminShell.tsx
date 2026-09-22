@@ -17,7 +17,7 @@ import { BrandMark } from "./BrandMark";
 import { Button } from "@/components/ui/button";
 import { signOutCleanly } from "@/lib/signOut";
 
-const links = [
+const links: { to: string; label: string; icon: typeof LayoutDashboard; exact?: boolean }[] = [
   { to: "/admin", label: "نظرة عامة", icon: LayoutDashboard, exact: true },
   { to: "/admin/users", label: "المستخدمون", icon: Users },
   { to: "/admin/conversations", label: "المحادثات والصلاحيات", icon: MessagesSquare },

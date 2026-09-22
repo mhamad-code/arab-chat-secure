@@ -2,8 +2,10 @@ import { AlertTriangle, CheckCircle2, Info, ShieldAlert, X } from "lucide-react"
 import type { Alert } from "@/lib/types";
 import { cn } from "@/lib/utils";
 
+const INFO_STYLE = { icon: Info, cls: "border-info/30 bg-info/8 text-foreground [&_svg]:text-info" };
+
 const styles: Record<string, { icon: typeof Info; cls: string }> = {
-  info: { icon: Info, cls: "border-info/30 bg-info/8 text-foreground [&_svg]:text-info" },
+  info: INFO_STYLE,
   success: { icon: CheckCircle2, cls: "border-success/30 bg-success/8 [&_svg]:text-success" },
   warning: { icon: AlertTriangle, cls: "border-warning/40 bg-warning/10 [&_svg]:text-warning" },
   important: { icon: ShieldAlert, cls: "border-destructive/40 bg-destructive/8 [&_svg]:text-destructive" },
@@ -18,7 +20,7 @@ export function AlertCard({
   onDismiss?: () => void;
   className?: string;
 }) {
-  const s = styles[alert.type] ?? styles.info;
+  const s = styles[alert.type] ?? INFO_STYLE;
   const Icon = s.icon;
   return (
     <div
