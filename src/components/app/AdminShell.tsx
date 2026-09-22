@@ -19,13 +19,13 @@ import { signOutCleanly } from "@/lib/signOut";
 
 const links = [
   { to: "/admin", label: "نظرة عامة", icon: LayoutDashboard, exact: true },
-  { to: "/admin/users", label: "المستخدمون", icon: Users },
-  { to: "/admin/conversations", label: "المحادثات والصلاحيات", icon: MessagesSquare },
-  { to: "/admin/alerts", label: "التنبيهات", icon: Bell },
-  { to: "/admin/welcome", label: "رسالة الترحيب", icon: MessageSquare },
-  { to: "/admin/branding", label: "الهوية والإعدادات", icon: Palette },
-  { to: "/admin/security", label: "الأمان", icon: Shield },
-  { to: "/admin/activity", label: "سجل النشاط", icon: Activity },
+  { to: "/admin/users", label: "المستخدمون", icon: Users, exact: false },
+  { to: "/admin/conversations", label: "المحادثات والصلاحيات", icon: MessagesSquare, exact: false },
+  { to: "/admin/alerts", label: "التنبيهات", icon: Bell, exact: false },
+  { to: "/admin/welcome", label: "رسالة الترحيب", icon: MessageSquare, exact: false },
+  { to: "/admin/branding", label: "الهوية والإعدادات", icon: Palette, exact: false },
+  { to: "/admin/security", label: "الأمان", icon: Shield, exact: false },
+  { to: "/admin/activity", label: "سجل النشاط", icon: Activity, exact: false },
 ] as const;
 
 export function AdminShell({ children }: { children: ReactNode }) {

@@ -68,9 +68,9 @@ function SetupPage() {
         className="space-y-4"
         onSubmit={(e) => {
           e.preventDefault();
-          if (form.name.trim().length < 2) return toast.error("الاسم قصير جداً");
-          if (!form.email.trim()) return toast.error("أدخل بريداً إلكترونياً");
-          if (form.password.length < 8) return toast.error("كلمة المرور يجب أن تكون 8 أحرف على الأقل");
+          if (form.name.trim().length < 2) { toast.error("الاسم قصير جداً"); return; }
+          if (!form.email.trim()) { toast.error("أدخل بريداً إلكترونياً"); return; }
+          if (form.password.length < 8) { toast.error("كلمة المرور يجب أن تكون 8 أحرف على الأقل"); return; }
           submit.mutate();
         }}
       >

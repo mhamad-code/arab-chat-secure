@@ -8,10 +8,10 @@ export function UserAvatar({
   className,
 }: {
   name: string;
-  avatarUrl?: string | null;
-  online?: boolean;
-  size?: "sm" | "md" | "lg";
-  className?: string;
+  avatarUrl?: string | null | undefined;
+  online?: boolean | undefined;
+  size?: "sm" | "md" | "lg" | undefined;
+  className?: string | undefined;
 }) {
   const initials = name.trim().split(/\s+/).slice(0, 2).map((s) => s[0]).join("") || "؟";
   const dim = size === "lg" ? "h-14 w-14 text-lg" : size === "sm" ? "h-8 w-8 text-xs" : "h-11 w-11 text-sm";

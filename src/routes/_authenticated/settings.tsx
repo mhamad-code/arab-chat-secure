@@ -72,7 +72,7 @@ function SettingsPage() {
             className="mt-5 space-y-3"
             onSubmit={(e) => {
               e.preventDefault();
-              if (name.trim().length < 2) return toast.error("الاسم قصير جداً");
+              if (name.trim().length < 2) { toast.error("الاسم قصير جداً"); return; }
               saveName.mutate();
             }}
           >
