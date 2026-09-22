@@ -70,8 +70,8 @@ function AdminConversations() {
           className="mt-4 grid gap-3 sm:grid-cols-[1fr_1fr_auto]"
           onSubmit={(e) => {
             e.preventDefault();
-            if (!userA || !userB) return toast.error("اختر مستخدمين");
-            if (userA === userB) return toast.error("اختر مستخدمين مختلفين");
+            if (!userA || !userB) { toast.error("اختر مستخدمين"); return; }
+            if (userA === userB) { toast.error("اختر مستخدمين مختلفين"); return; }
             createConversation.mutate();
           }}
         >

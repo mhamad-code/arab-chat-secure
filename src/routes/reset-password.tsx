@@ -66,7 +66,7 @@ function ResetPasswordPage() {
           className="space-y-4"
           onSubmit={(e) => {
             e.preventDefault();
-            if (password.length < 8) return toast.error("كلمة المرور يجب أن تكون 8 أحرف على الأقل");
+            if (password.length < 8) { toast.error("كلمة المرور يجب أن تكون 8 أحرف على الأقل"); return; }
             updatePassword.mutate();
           }}
         >
@@ -102,7 +102,7 @@ function ResetPasswordPage() {
         className="space-y-4"
         onSubmit={(e) => {
           e.preventDefault();
-          if (!email.trim()) return toast.error("أدخل بريدك الإلكتروني");
+          if (!email.trim()) { toast.error("أدخل بريدك الإلكتروني"); return; }
           requestLink.mutate();
         }}
       >

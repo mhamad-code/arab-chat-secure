@@ -112,9 +112,9 @@ function AdminUsers() {
                 className="space-y-3"
                 onSubmit={(e) => {
                   e.preventDefault();
-                  if (form.name.trim().length < 2) return toast.error("الاسم قصير جداً");
-                  if (!form.email.trim()) return toast.error("أدخل بريداً إلكترونياً");
-                  if (form.password.length < 8) return toast.error("كلمة المرور 8 أحرف على الأقل");
+                  if (form.name.trim().length < 2) { toast.error("الاسم قصير جداً"); return; }
+                  if (!form.email.trim()) { toast.error("أدخل بريداً إلكترونياً"); return; }
+                  if (form.password.length < 8) { toast.error("كلمة المرور 8 أحرف على الأقل"); return; }
                   create.mutate();
                 }}
               >
@@ -222,7 +222,7 @@ function AdminUsers() {
             className="space-y-3"
             onSubmit={(e) => {
               e.preventDefault();
-              if (newPassword.length < 8) return toast.error("كلمة المرور 8 أحرف على الأقل");
+              if (newPassword.length < 8) { toast.error("كلمة المرور 8 أحرف على الأقل"); return; }
               resetPassword.mutate();
             }}
           >
@@ -251,7 +251,7 @@ function AdminUsers() {
             className="space-y-3"
             onSubmit={(e) => {
               e.preventDefault();
-              if (renameValue.trim().length < 2) return toast.error("الاسم قصير جداً");
+              if (renameValue.trim().length < 2) { toast.error("الاسم قصير جداً"); return; }
               rename.mutate();
             }}
           >
